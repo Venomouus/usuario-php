@@ -38,7 +38,12 @@ class UsuarioController extends Controller
             'email' => $request->email,
             'idade' => $request->idade,
         ];
-        Usuario::where('id',$id)->update($data);
+        Usuario::where('id', $id)->update($data);
+        return redirect()->route('usuarios-index');
+    }
+    public function destroy($id)
+    {
+        Usuario::where('id', $id)->delete();
         return redirect()->route('usuarios-index');
     }
 }
